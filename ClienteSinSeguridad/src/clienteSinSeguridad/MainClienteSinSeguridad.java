@@ -65,6 +65,7 @@ public class MainClienteSinSeguridad
 		if(!resp.equals("CIFRADOLS2")){throw new Exception ("SERVIDOR RESPONDIO MAL (el CIFRADOLS2");}
 		
 		System.out.println("TERMINA!");
+
 	}
 	
 	public static void main(String[] args)
