@@ -15,6 +15,7 @@ public class MainCliente
 	private final static String DIRECCION = "localhost";
 	private final static int PUERTO = 4444;
 
+	private CifradorSimetricoAES cifradorSim;
 	private CifradorAsimetricoRSA cifradorAsim;
 	private PublicKey publicKey;
 	
@@ -27,6 +28,7 @@ public class MainCliente
 		publicKey = cifradorAsim.darLlavePublica();
 
 		//crea el cifrador simetrico 
+		cifradorSim = new CifradorSimetricoAES();
 
 		//crea el hash
 		cifradorHash = new CifradorHmacMD5();
