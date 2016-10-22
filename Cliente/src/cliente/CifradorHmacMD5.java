@@ -3,6 +3,11 @@ package cliente;
 import java.security.MessageDigest;
 
 public class CifradorHmacMD5 {
+	
+	public CifradorHmacMD5() 
+	{
+		//:)
+	}
 
 	private byte[] getKeyedDigest(byte[] buffer) {
 		try {

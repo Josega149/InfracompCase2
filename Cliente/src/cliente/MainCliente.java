@@ -17,6 +17,8 @@ public class MainCliente
 
 	private CifradorAsimetricoRSA cifradorAsim;
 	private PublicKey publicKey;
+	
+	private CifradorHmacMD5 cifradorHash;
 
 	public MainCliente()
 	{
@@ -27,7 +29,8 @@ public class MainCliente
 		//crea el cifrador simetrico 
 
 		//crea el hash
-
+		cifradorHash = new CifradorHmacMD5();
+		
 		//inicia el protocolo de comunicacion
 		iniciarComunicacion();
 
