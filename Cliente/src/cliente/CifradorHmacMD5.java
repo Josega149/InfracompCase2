@@ -1,5 +1,7 @@
 package cliente;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.security.MessageDigest;
 
 public class CifradorHmacMD5 {
@@ -14,37 +16,22 @@ public class CifradorHmacMD5 {
 		}
 	}
 
-	public byte[] calcular(String dato) {
+	public byte[] calcular() {
 		try {
+			BufferedReader stdIn = new BufferedReader(new	InputStreamReader(System.in));
+			String dato = stdIn.readLine();
 			byte[] text = dato.getBytes();
 			String s1 = new String(text);
-			System.out.println("Dato original: " + s1);
+			System.out.println("dato original: " + s1);
 			byte [] digest = getKeyedDigest(text);
 			String s2 = new String(digest);
-			System.out.println("Digest: "+ s2);
+			System.out.println("digest: "+ s2);
 			return digest;
 		}
 		catch (Exception e) {
-			System.out.println("Excepción: " + e.getMessage());
+			System.out.println("Excepcion: " + e.getMessage());
 			return null;
 		}
-	}
-	
-	public boolean sonIguales(String msj, byte[] digest) {
-		boolean son= true;
-		byte[] mensaje = calcular(msj);
-		if (digest.length == mensaje.length){
-			for (int i=0; i<mensaje.length && son;i++){
-				if (digest[i]!=mensaje[i]) {
-					son = false;
-				}
-			}
-		}
-		else {
-			son = false;
-		}
-		
-		return son;
 	}
 
 }
