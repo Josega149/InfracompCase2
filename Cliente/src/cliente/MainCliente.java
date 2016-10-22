@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.security.KeyPair;
 import java.security.PublicKey;
 
 public class MainCliente 
@@ -13,25 +14,29 @@ public class MainCliente
 	private BufferedReader in;
 
 	private final static String DIRECCION = "localhost";
-	private final static int PUERTO = 4444;
+	private final static int PUERTO = 4443;
 
 	private CifradorSimetricoAES cifradorSim;
 	private CifradorAsimetricoRSA cifradorAsim;
-	private PublicKey publicKey;
+	private KeyPair keyAsin;
 	
 	private CifradorHmacMD5 cifradorHash;
+	private ManejadorCertificado manejadorCertificado;
 
 	public MainCliente()
 	{
 		//crea el cifrador asimetrico y la llave publica
 		cifradorAsim = new CifradorAsimetricoRSA();
-		publicKey = cifradorAsim.darLlavePublica();
+		keyAsin = cifradorAsim.darLlave();
 
 		//crea el cifrador simetrico 
 		cifradorSim = new CifradorSimetricoAES();
 
 		//crea el hash
 		cifradorHash = new CifradorHmacMD5();
+		
+		//crea el manejador de certificado
+		manejadorCertificado = new ManejadorCertificado();
 		
 		//inicia el protocolo de comunicacion
 		iniciarComunicacion();
@@ -67,17 +72,26 @@ public class MainCliente
 		}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
 		// comienzo pasar el certificado
-		out.println("CERTFICADOCLIENTE");
+		manejadorCertificado.enviarCertificado();
 		resp = in.readLine();
 		if(!resp.equals("CERTIFICADOSERVIDOR")){throw new Exception ("SERVIDOR RESPONDIO MAL (el certificado)");}
 		
 		out.println("OK");
-		resp = in.readLine();
-		if(!resp.equals("CIFRADOKC+")){throw new Exception ("SERVIDOR RESPONDIO MAL (el cifrado ck+)");}
+		resp = in.readLine();//llega cifrado con la llave publica del cliente (la mia)
+		byte [] textoEnBytes = resp.getBytes();
+		String llaveSimetricaAcordada = cifradorAsim.descifrarLlaveSimetrica(textoEnBytes, keyAsin.getPrivate());
 		
-		out.println("CIFRADOKS+");
+		
+		//mando cifrado con la llave publica del server la llave que me llego
+		byte [] llaveSimetricaAcordadaB = llaveSimetricaAcordada.getBytes();
+		String llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(llaveSimetricaAcordadaB, llavePublicaServer);
+		out.println(llaveSimetricaCifrada);
+	
 		resp = in.readLine();
-		if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues del cifrado ks+)");}
+		if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues de mandar la llave simetrica)");}
+		
+		
+		
 		
 		out.println("CIFRADOLS1");
 		resp = in.readLine();

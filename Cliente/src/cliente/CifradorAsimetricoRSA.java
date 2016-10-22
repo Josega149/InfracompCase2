@@ -31,33 +31,34 @@ public class CifradorAsimetricoRSA
 		catch(Exception e){e.getStackTrace();}
 	}
 	
-	public String descifrarLlaveSimetrica(byte [] textoCifrado, PublicKey llavePublicaServer) throws Exception
+	public KeyPair darLlave()
 	{
-		String llaveSimetrica = "";
-		//llega un texto cifrado con llave privada del server que contiene la simetrica que sera usada
-		llaveSimetrica = descifrar(textoCifrado, llavePublicaServer);
-		
-		if(llaveSimetrica == null){throw new Exception("Ocurrio un error en descifrar");}
-		return llaveSimetrica;
+		return keyPair;
 	}
 	public PublicKey darLlavePublica()
 	{
 		return keyPair.getPublic();
 	}
-
-	public byte[] cifrar(String mensajeACifrar) 
+	private String cifrarLlaveSimetrica(String textoCifrado, PublicKey llavePublicaServer) throws Exception
+	{
+		String llaveSimetricaCifrada = "";
+		//llega un texto cifrado con llave privada del server que contiene la simetrica que sera usada
+		llaveSimetricaCifrada = new String(cifrarConPublica(textoCifrado, llavePublicaServer));
+		
+		if(llaveSimetricaCifrada == null){throw new Exception("Ocurrio un error en descifrar");}
+		return llaveSimetricaCifrada;
+	}
+	public byte[] cifrarConPublica(String mensajeACifrar, PublicKey llavePublica) 
 	{
 		try 
 		{
 			Cipher cipher = Cipher.getInstance(ALGORITMO);
-			//BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in));
-			//String pwd = stdIn.readLine();
 			
 			byte [] clearText = mensajeACifrar.getBytes();
 			String s1 = new String (clearText);
 			System.out.println("texto original: " + s1);
 			
-			cipher.init(Cipher.ENCRYPT_MODE, keyPair.getPublic());//encripta con la publica
+			cipher.init(Cipher.ENCRYPT_MODE, llavePublica);//encripta con la publica del server
 			
 			long startTime = System.nanoTime();
 			byte [] cipheredText = cipher.doFinal(clearText);
@@ -75,12 +76,23 @@ public class CifradorAsimetricoRSA
 		}
 	}
 
-	public String descifrar(byte[] cipheredText, PublicKey llave) 
+	public String descifrarLlaveSimetrica(byte [] textoCifrado, PrivateKey llavePrivadaCliente) throws Exception
+	{
+		String llaveSimetrica = "";
+		//llega un texto cifrado con llave privada del server que contiene la simetrica que sera usada
+		llaveSimetrica = descifrarConPrivada(textoCifrado, llavePrivadaCliente);
+		
+		if(llaveSimetrica == null){throw new Exception("Ocurrio un error en descifrar");}
+		return llaveSimetrica;
+	}
+	private String descifrarConPrivada(byte[] cipheredText, PrivateKey llave) 
 	{
 		try 
 		{
 			Cipher cipher = Cipher.getInstance(ALGORITMO);
 			cipher.init(Cipher.DECRYPT_MODE, llave); // desencripta con la llave que le entra
+													 // le debe llegar la llave privada, pues el mensaje
+													 // viene cifrado con la llave publica
 			byte [] clearText = cipher.doFinal(cipheredText);
 			String s3 = new String(clearText);
 			System.out.println("texto original: " + s3);
