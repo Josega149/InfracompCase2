@@ -45,15 +45,15 @@ public class CifradorAsimetricoRSA
 		return keyPair.getPublic();
 	}
 
-	public byte[] cifrar() 
+	public byte[] cifrar(String mensajeACifrar) 
 	{
 		try 
 		{
 			Cipher cipher = Cipher.getInstance(ALGORITMO);
-			BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in));
+			//BufferedReader stdIn =new BufferedReader(new InputStreamReader(System.in));
+			//String pwd = stdIn.readLine();
 			
-			String pwd = stdIn.readLine();
-			byte [] clearText = pwd.getBytes();
+			byte [] clearText = mensajeACifrar.getBytes();
 			String s1 = new String (clearText);
 			System.out.println("texto original: " + s1);
 			
