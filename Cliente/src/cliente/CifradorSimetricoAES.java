@@ -12,18 +12,20 @@ public class CifradorSimetricoAES {
 	private final static String ALGORITMO = "AES";
 	private final static String PADDING="AES/ECB/PKCS5Padding";
 
-	public byte[] cifrar() {
+	/**
+	 * 
+	 * @param msjRecibido mensaje a cifrar
+	 * @param llave llave con la que se cifra
+	 * @return codigo de mensaje cifrado
+	 */
+	public byte[] cifrar(String msjRecibido, SecretKey llave) {
 		byte[] cipheredText;
 		try
 		{
-			KeyGenerator keygen = KeyGenerator.getInstance(ALGORITMO);
-			desKey = keygen.generateKey();
+			desKey = llave;
 			Cipher cipher = Cipher.getInstance(PADDING);
 
-			BufferedReader stdIn = new BufferedReader(
-					new	InputStreamReader(System.in));
-			String pwd = stdIn.readLine();
-			byte[] clearText = pwd.getBytes();
+			byte[] clearText = msjRecibido.getBytes();
 			String s1 = new	String (clearText);
 			System.out.println("clave original: " + s1);
 			cipher.init(Cipher.ENCRYPT_MODE, desKey);
@@ -42,17 +44,23 @@ public class CifradorSimetricoAES {
 	}
 
 
-	public void descifrar(
-			byte[] cipheredText) {
+	/**
+	 * Cifra mensaje infresado
+	 * @param cipheredText byte[] con un texto cifrado
+	 * @return s3 mensaje original
+	 */
+	public String descifrar( byte[] cipheredText, SecretKey llave) {
 		try	{
+			desKey = llave;
 			Cipher cipher = Cipher.getInstance(PADDING);
 			cipher.init(Cipher.DECRYPT_MODE, desKey);
 			byte[] clearText = cipher.doFinal(cipheredText);
 			String s3 = new String(clearText);
-			System.out.println(	"clave original after: " + s3);
+			return s3;
 		}
 		catch (Exception e) {
 			System.out.println(	"Excepcion: " + e.getMessage());
+			return null;
 		}
 	}
 
