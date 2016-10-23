@@ -6,6 +6,10 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.security.KeyPair;
 import java.security.PublicKey;
+import java.util.Base64;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 public class MainCliente 
 {
@@ -81,6 +85,9 @@ public class MainCliente
 		byte [] textoEnBytes = resp.getBytes();
 		String llaveSimetricaAcordada = cifradorAsim.descifrarLlaveSimetrica(textoEnBytes, keyAsin.getPrivate());
 		
+		byte[] decodedKey = Base64.getDecoder().decode(llaveSimetricaAcordada);
+		// rebuild key using SecretKeySpec
+		SecretKey llaveSimetrica = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
 		
 		//mando cifrado con la llave publica del server la llave que me llego
 		String llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(llaveSimetricaAcordada, llavePublicaServer);
@@ -93,7 +100,7 @@ public class MainCliente
 		
 		//cifra el mensaje a mandar
 		String consulta = "consulta";
-		String consultaCifrada = cifradorSim.cifrar(consulta, llaveSimetrica);
+		String consultaCifrada = new String(cifradorSim.cifrar(consulta, llaveSimetrica));
 		String hConsulta = new String(cifradorHash.calcular(consulta));
 		
 		String mensajeCompleto = consultaCifrada+":"+hConsulta;
@@ -102,8 +109,8 @@ public class MainCliente
 		out.println(mensajeCompleto);
 		resp = in.readLine();
 		
-		//decifra el mensaje de manera sincronica
-		resp = cifradorSim.descifrar(resp, llaveSimetrica);
+		//decifra el mensaje de manera sincronica la respuesta a la consulta
+		resp = cifradorSim.descifrar(resp.getBytes(), llaveSimetrica);
 		
 		//verifica si dice ok o error
 		if(resp.startsWith("OK") || resp.equals("ERROR"))
