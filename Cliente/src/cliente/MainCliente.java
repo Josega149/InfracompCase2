@@ -94,19 +94,20 @@ public class MainCliente
 		
 		//cifra el mensaje a mandar
 		String consulta = "consulta";
+		String consultaCifrada = cifradorSim.cifrar(consulta, llaveSimetrica);
 		String hConsulta = new String(cifradorHash.calcular(consulta));
 		
-		String mensajeCompleto = consulta+":"+hConsulta;
+		String mensajeCompleto = consultaCifrada+":"+hConsulta;
 		
 		//manda el mensaje concaenado
 		out.println(mensajeCompleto);
 		resp = in.readLine();
 		
 		//decifra el mensaje de manera sincronica
-		
+		resp = cifradorSim.descifrar(resp, llaveSimetrica);
 		
 		//verifica si dice ok o error
-		if(resp.equals("OK") || resp.equals("ERROR"))
+		if(resp.startsWith("OK") || resp.equals("ERROR"))
 		{
 			if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LA CONSULTA");}
 		}
