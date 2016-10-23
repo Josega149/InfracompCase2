@@ -45,7 +45,11 @@ public class ManejadorCertificado {
 			new BigInteger("b8f52fc6f38593dabb661d3f50f8897f8106eee68b1bce78a95b132b4e5b5d19", 16));
 
 
-	public void creation(){
+	/**
+	 * 
+	 * @return String con las lineas del certificado, x509 version 3
+	 */
+	public String creation(){
 		try {
 
 			ContentSigner sigGen = new BcRSAContentSignerBuilder(sigAlgId, digAlgId).build(lwPrivKey);
@@ -61,16 +65,13 @@ public class ManejadorCertificado {
 			Date endDate = new Date(System.currentTimeMillis() + 365 * 24 * 60 * 60 * 1000);
 
 			X509v3CertificateBuilder v3CertGen = new X509v3CertificateBuilder(
-					new X500Name("CN=Test"), 
+					new X500Name("CN=EmisorName"), 
 					BigInteger.ONE, 
 					startDate, endDate, 
-					new X500Name("CN=Test"), 
+					new X500Name("CN=SubjectName"), 
 					subPubKeyInfo);
 
 			X509CertificateHolder certHolder = v3CertGen.build(sigGen);
-
-			System.out.println(certHolder.getIssuer());
-			System.out.println(certHolder.getVersionNumber());
 
 			ContentVerifierProvider contentVerifierProvider = new BcRSAContentVerifierProviderBuilder(
 					new DefaultDigestAlgorithmIdentifierFinder())
@@ -80,12 +81,28 @@ public class ManejadorCertificado {
 			{
 				System.err.println("signature invalid");
 			}
+			
+			String msjCert = new String();
+			msjCert += certHolder.getVersionNumber() + "\n";
+			msjCert += certHolder.getSerialNumber() +"\n";
+			msjCert += certHolder.getSignatureAlgorithm() +"\n";
+			msjCert += certHolder.getIssuer() +"\n";
+			msjCert += certHolder.getNotAfter() +"\n";
+			msjCert += certHolder.getSubject() +"\n";
+			msjCert += certHolder.getSubjectPublicKeyInfo() +"\n";
+			msjCert += certHolder.getIssuer() +"\n";	//deberia ser ID del issuer
+			msjCert += certHolder.getSubject() +"\n"; //deberia ser ID del issuer
+			msjCert += certHolder.getExtensions();
+			System.out.println(msjCert);
 
+			return msjCert;
 		} catch (Exception E)
 		{
+			return null;
 
 		}
-	}
+		
+}
 
 	/**
 	 * Devuelve el public key del server
