@@ -1,5 +1,10 @@
 package cliente;
 import java.math.BigInteger;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Date;
 
 import org.bouncycastle.asn1.ASN1Object;
@@ -19,6 +24,7 @@ import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.bc.BcRSAContentSignerBuilder;
 import org.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
+import org.bouncycastle.util.encoders.Base64;
 
 public class ManejadorCertificado {
 
@@ -49,14 +55,14 @@ public class ManejadorCertificado {
 	 * 
 	 * @return String con las lineas del certificado, x509 version 3
 	 */
-	public String creation(){
+	public String creation(PublicKey llavePublica){
 		try {
 
 			ContentSigner sigGen = new BcRSAContentSignerBuilder(sigAlgId, digAlgId).build(lwPrivKey);
 
 
-			//
-			byte[] publickeyb=sigAlgId.getEncoded();
+
+			byte[] publickeyb=llavePublica.getEncoded();//Probar
 			//SubjectPublicKeyInfo subPubKeyInfo = ....;
 			SubjectPublicKeyInfo subPubKeyInfo = new SubjectPublicKeyInfo( sigAlgId, publickeyb);
 
@@ -81,7 +87,7 @@ public class ManejadorCertificado {
 			{
 				System.err.println("signature invalid");
 			}
-			
+
 			String msjCert = new String();
 			msjCert += certHolder.getVersionNumber() + "\n";
 			msjCert += certHolder.getSerialNumber() +"\n";
@@ -101,17 +107,31 @@ public class ManejadorCertificado {
 			return null;
 
 		}
-		
-}
+
+	}
 
 	/**
 	 * Devuelve el public key del server
 	 * @param lineasCertificadoServer certificado linea por linea
 	 * @return llave publica que el servidor pasa dentro del certificado como parametro
 	 */
-	public String procesarCertificado(String lineasCertificadoServer)
+	public PublicKey procesarCertificado(String lineasCertificadoServer)
 	{
 		String[] arrayCertServer = lineasCertificadoServer.split("\n");
-		return arrayCertServer[6];
+		String textoPK = arrayCertServer[6];
+
+		byte[] publicBytes = Base64.decode(textoPK);
+		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
+		KeyFactory keyFactory;
+		PublicKey pubKey=null;
+		try {
+			keyFactory = KeyFactory.getInstance("RSA");
+
+			pubKey = keyFactory.generatePublic(keySpec);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pubKey;
 	}
 }
