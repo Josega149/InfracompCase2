@@ -39,7 +39,7 @@ public class CifradorAsimetricoRSA
 	{
 		return keyPair.getPublic();
 	}
-	private String cifrarLlaveSimetrica(String textoCifrado, PublicKey llavePublicaServer) throws Exception
+	public String cifrarLlaveSimetrica(String textoCifrado, PublicKey llavePublicaServer) throws Exception
 	{
 		String llaveSimetricaCifrada = "";
 		//llega un texto cifrado con llave privada del server que contiene la simetrica que sera usada

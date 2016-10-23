@@ -73,8 +73,8 @@ public class MainCliente
 		
 		// comienzo pasar el certificado
 		manejadorCertificado.enviarCertificado();
-		resp = in.readLine();
-		if(!resp.equals("CERTIFICADOSERVIDOR")){throw new Exception ("SERVIDOR RESPONDIO MAL (el certificado)");}
+		PublicKey llavePublicaServer = manejadorCertificado.procesarCertificado();
+		
 		
 		out.println("OK");
 		resp = in.readLine();//llega cifrado con la llave publica del cliente (la mia)
@@ -83,8 +83,7 @@ public class MainCliente
 		
 		
 		//mando cifrado con la llave publica del server la llave que me llego
-		byte [] llaveSimetricaAcordadaB = llaveSimetricaAcordada.getBytes();
-		String llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(llaveSimetricaAcordadaB, llavePublicaServer);
+		String llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(llaveSimetricaAcordada, llavePublicaServer);
 		out.println(llaveSimetricaCifrada);
 	
 		resp = in.readLine();
