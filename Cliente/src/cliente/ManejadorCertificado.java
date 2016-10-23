@@ -87,19 +87,14 @@ public class ManejadorCertificado {
 		}
 	}
 
-	public static void main(String[] args) 
+	/**
+	 * Devuelve el public key del server
+	 * @param lineasCertificadoServer certificado linea por linea
+	 * @return llave publica que el servidor pasa dentro del certificado como parametro
+	 */
+	public String procesarCertificado(String lineasCertificadoServer)
 	{
-		ManejadorCertificado manejador = new ManejadorCertificado();
-		manejador.creation();
-	}
-
-	public void enviarCertificado()
-	{
-
-	}
-
-	public void procesarCertificado()
-	{
-
+		String[] arrayCertServer = lineasCertificadoServer.split("\n");
+		return arrayCertServer[6];
 	}
 }
