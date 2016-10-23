@@ -92,10 +92,28 @@ public class MainCliente
 		
 		
 		
+		//cifra el mensaje a mandar
+		String consulta = "consulta";
+		String hConsulta = new String(cifradorHash.calcular(consulta));
 		
-		out.println("CIFRADOLS1");
+		String mensajeCompleto = consulta+":"+hConsulta;
+		
+		//manda el mensaje concaenado
+		out.println(mensajeCompleto);
 		resp = in.readLine();
-		if(!resp.equals("CIFRADOLS2")){throw new Exception ("SERVIDOR RESPONDIO MAL (el CIFRADOLS2");}
+		
+		//decifra el mensaje de manera sincronica
+		
+		
+		//verifica si dice ok o error
+		if(resp.equals("OK") || resp.equals("ERROR"))
+		{
+			if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LA CONSULTA");}
+		}
+		else
+		{
+			throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para la consulta)");
+		}
 		
 		System.out.println("TERMINA!");
 	}
