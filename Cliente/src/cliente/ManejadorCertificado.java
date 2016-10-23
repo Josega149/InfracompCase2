@@ -29,6 +29,7 @@ import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
 import org.bouncycastle.operator.bc.BcRSAContentSignerBuilder;
 import org.bouncycastle.operator.bc.BcRSAContentVerifierProviderBuilder;
+import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.util.encoders.Base64;
 
 public class ManejadorCertificado {
@@ -50,8 +51,7 @@ public class ManejadorCertificado {
 		
 		try {
 
-			ContentSigner sigGen = new BcRSAContentSignerBuilder(sigAlgId, digAlgId).
-					build(llaveAsim.getPrivate());
+			ContentSigner sigGen = new JcaContentSignerBuilder("SHA1withRSA").setProvider("BC").build(llaveAsim.getPrivate());
 
 
 
