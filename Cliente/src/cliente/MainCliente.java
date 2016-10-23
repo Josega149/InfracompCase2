@@ -78,8 +78,7 @@ public class MainCliente
 		}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
 		// comienzo pasar el certificado
-		String certificadoCliente = manejadorCertificado.creation(keyAsin,canal.getOutputStream(),out);
-		System.out.println("CERTIFICADO CLIENTE: "+certificadoCliente);
+		manejadorCertificado.creation(keyAsin,canal.getOutputStream(),out);
 		PublicKey llavePublicaServer = null;//manejadorCertificado.procesarCertificado();
 		
 		

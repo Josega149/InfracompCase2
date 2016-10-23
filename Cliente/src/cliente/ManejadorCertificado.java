@@ -45,7 +45,7 @@ public class ManejadorCertificado {
 	 * 
 	 * @return String con las lineas del certificado, x509 version 3
 	 */
-	public String creation(KeyPair llaveAsim, OutputStream outputStream, PrintWriter pw)
+	public void creation(KeyPair llaveAsim, OutputStream outputStream, PrintWriter pw)
 	{
 		Security.addProvider(new BouncyCastleProvider());
 		
@@ -81,7 +81,6 @@ public class ManejadorCertificado {
 				System.err.println("signature invalid");
 			}
 			
-			String msjCert = new String();
 			
 			pw.println("-----BEGIN CERTIFICATE-----");
 			byte [] certificado = certHolder.getEncoded();
@@ -89,11 +88,9 @@ public class ManejadorCertificado {
 			Base64.encode(certificado, outputStream);
 			pw.println("-----END CERTIFICATE-----");
 			
-
-			return msjCert;
-		} catch (Exception E)
+		} catch (Exception e)
 		{
-			return null;
+			e.getStackTrace();
 
 		}
 
