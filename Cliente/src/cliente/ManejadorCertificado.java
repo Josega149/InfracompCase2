@@ -20,6 +20,7 @@ import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v1CertificateBuilder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
+import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -48,11 +49,11 @@ public class ManejadorCertificado {
 	public void creation(KeyPair llaveAsim, OutputStream outputStream, PrintWriter pw)
 	{
 		Security.addProvider(new BouncyCastleProvider());
-		
+
+		//System.out.println("ya agrega el provider");
 		try {
 
 			ContentSigner sigGen = new JcaContentSignerBuilder("SHA1withRSA").setProvider("BC").build(llaveAsim.getPrivate());
-
 
 
 			byte[] publickeyb= llaveAsim.getPublic().getEncoded();//Probar
@@ -63,15 +64,16 @@ public class ManejadorCertificado {
 			Date startDate = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
 			Date endDate = new Date(System.currentTimeMillis() + 365 * 24 * 60 * 60 * 1000);
 
-			X509v3CertificateBuilder v3CertGen = new X509v3CertificateBuilder(
+			X509v3CertificateBuilder v3CertGen = new JcaX509v3CertificateBuilder(
 					new X500Name("CN=EmisorName"), 
 					BigInteger.ONE, 
 					startDate, endDate, 
 					new X500Name("CN=SubjectName"), 
-					subPubKeyInfo);
+					llaveAsim.getPublic());
 
 			X509CertificateHolder certHolder = v3CertGen.build(sigGen);
 
+			/**
 			ContentVerifierProvider contentVerifierProvider = new BcRSAContentVerifierProviderBuilder(
 					new DefaultDigestAlgorithmIdentifierFinder())
 					.build(certHolder);
@@ -79,18 +81,18 @@ public class ManejadorCertificado {
 			if (!certHolder.isSignatureValid(contentVerifierProvider))
 			{
 				System.err.println("signature invalid");
-			}
-			
-			
+			}*/
+
+
 			pw.println("-----BEGIN CERTIFICATE-----");
 			byte [] certificado = certHolder.getEncoded();
 			//codifico en base 64
 			Base64.encode(certificado, outputStream);
-			pw.println("-----END CERTIFICATE-----");
-			
+			pw.println("\n-----END CERTIFICATE-----");
+
 		} catch (Exception e)
 		{
-			e.getStackTrace();
+			e.printStackTrace();
 
 		}
 

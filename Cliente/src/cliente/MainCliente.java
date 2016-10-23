@@ -81,8 +81,15 @@ public class MainCliente
 		manejadorCertificado.creation(keyAsin,canal.getOutputStream(),out);
 		PublicKey llavePublicaServer = null;//manejadorCertificado.procesarCertificado();
 		
+		//me llega el certificado del server
+		in.readLine();//llega el begin
+		resp = in.readLine();//llega el main
+		in.readLine();//llega el end
+		
+		manejadorCertificado.procesarCertificado(resp);
 		
 		out.println("OK");
+		
 		resp = in.readLine();//llega cifrado con la llave publica del cliente (la mia)
 		byte [] textoEnBytes = resp.getBytes();
 		String llaveSimetricaAcordada = cifradorAsim.descifrarLlaveSimetrica(textoEnBytes, keyAsin.getPrivate());
