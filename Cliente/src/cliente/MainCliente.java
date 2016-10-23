@@ -2,6 +2,7 @@ package cliente;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.security.KeyPair;
@@ -15,6 +16,7 @@ public class MainCliente
 {
 	private Socket canal;
 	private PrintWriter out;
+	private OutputStream os;
 	private BufferedReader in;
 
 	private final static String DIRECCION = "localhost";
@@ -76,8 +78,9 @@ public class MainCliente
 		}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
 		// comienzo pasar el certificado
-		manejadorCertificado.enviarCertificado();
-		PublicKey llavePublicaServer = manejadorCertificado.procesarCertificado();
+		String certificadoCliente = manejadorCertificado.creation(keyAsin,canal.getOutputStream(),out);
+		System.out.println("CERTIFICADO CLIENTE: "+certificadoCliente);
+		PublicKey llavePublicaServer = null;//manejadorCertificado.procesarCertificado();
 		
 		
 		out.println("OK");
