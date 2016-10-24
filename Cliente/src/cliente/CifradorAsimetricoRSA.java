@@ -81,7 +81,7 @@ public class CifradorAsimetricoRSA
 		String llaveSimetrica = "";
 		//llega un texto cifrado con llave privada del server que contiene la simetrica que sera usada
 		llaveSimetrica = descifrarConPrivada(textoCifrado, llavePrivadaCliente);
-		
+//		System.out.println(" LLEGAAA EN DESCIFRAR LLAVE SIMETRICA ");
 		if(llaveSimetrica == null){throw new Exception("Ocurrio un error en descifrar");}
 		return llaveSimetrica;
 	}
@@ -101,6 +101,7 @@ public class CifradorAsimetricoRSA
 		catch (Exception e) 
 		{
 			System.out.println("Excepcion: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return null;
 	}

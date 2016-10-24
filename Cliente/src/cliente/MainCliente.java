@@ -11,6 +11,7 @@ import java.util.Base64;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 
 public class MainCliente 
 {
@@ -78,29 +79,26 @@ public class MainCliente
 		}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
 		// comienzo pasar el certificado
-		manejadorCertificado.creation(keyAsin,canal.getOutputStream(),out);
-		PublicKey llavePublicaServer = null;//manejadorCertificado.procesarCertificado();
+		PublicKey llavePublicaServer = manejadorCertificado.creationYProcesamiento(keyAsin,canal.getOutputStream(),out, in);
+		//manejadorCertificado.procesarCertificado();
 		
-		//me llega el certificado del server
-		in.readLine();//llega el begin
-		resp = in.readLine();//llega el main
-		in.readLine();//llega el end
 		
-		manejadorCertificado.procesarCertificado(resp);
-		
+		out.println("OK");
 		out.println("OK");
 		
 		resp = in.readLine();//llega cifrado con la llave publica del cliente (la mia)
-		byte [] textoEnBytes = resp.getBytes();
+		byte [] textoEnBytes = DatatypeConverter.parseHexBinary(resp);
 		String llaveSimetricaAcordada = cifradorAsim.descifrarLlaveSimetrica(textoEnBytes, keyAsin.getPrivate());
-		
-		byte[] decodedKey = Base64.getDecoder().decode(llaveSimetricaAcordada);
+		System.out.println("llave simetrica acordada "+llaveSimetricaAcordada);
+		byte[] decodedKey = (llaveSimetricaAcordada).getBytes();
 		// rebuild key using SecretKeySpec
+		//System.out.println(" que pasaaaaa ");
 		SecretKey llaveSimetrica = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
-		
+		System.out.println("LLAVE SIMETRICAAA "+llaveSimetrica);
 		//mando cifrado con la llave publica del server la llave que me llego
-		String llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(llaveSimetricaAcordada, llavePublicaServer);
-		out.println(llaveSimetricaCifrada);
+		String llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(llaveSimetrica.toString(), llavePublicaServer);
+		System.out.println("La llave simetrica cifradaaaaaaaa ");
+		out.println(DatatypeConverter.printHexBinary((llaveSimetricaCifrada).getBytes()) );
 	
 		resp = in.readLine();
 		if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues de mandar la llave simetrica)");}

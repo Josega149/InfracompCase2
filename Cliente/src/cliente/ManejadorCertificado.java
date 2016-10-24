@@ -1,4 +1,5 @@
 package cliente;
+import java.io.BufferedReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.math.BigInteger;
@@ -10,6 +11,8 @@ import java.security.Security;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Date;
+
+import java.security.cert.X509Certificate;
 
 import org.bouncycastle.asn1.ASN1Object;
 import org.bouncycastle.asn1.ASN1Sequence;
@@ -24,6 +27,7 @@ import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
 import org.bouncycastle.crypto.params.RSAKeyParameters;
 import org.bouncycastle.crypto.params.RSAPrivateCrtKeyParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.ContentVerifierProvider;
 import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
@@ -46,7 +50,7 @@ public class ManejadorCertificado {
 	 * 
 	 * @return String con las lineas del certificado, x509 version 3
 	 */
-	public void creation(KeyPair llaveAsim, OutputStream outputStream, PrintWriter pw)
+	public PublicKey creationYProcesamiento(KeyPair llaveAsim, OutputStream outputStream, PrintWriter pw, BufferedReader bf)
 	{
 		Security.addProvider(new BouncyCastleProvider());
 
@@ -89,37 +93,25 @@ public class ManejadorCertificado {
 			//codifico en base 64
 			Base64.encode(certificado, outputStream);
 			pw.println("\n-----END CERTIFICATE-----");
+			
+			PEMParser pem = new PEMParser(bf);
+			X509CertificateHolder sCert = (X509CertificateHolder) pem.readObject();
+			
+			X509Certificate serverCert509 = new JcaX509CertificateConverter().setProvider("BC").getCertificate(sCert);
+			
+			PublicKey publicKeyServer = serverCert509.getPublicKey();
+			
+			return publicKeyServer;
 
-		} catch (Exception e)
+		} 
+		catch (Exception e)
 		{
 			e.printStackTrace();
 
 		}
+		return null;
 
 	}
 
-	/**
-	 * Devuelve el public key del server
-	 * @param lineasCertificadoServer certificado linea por linea
-	 * @return llave publica que el servidor pasa dentro del certificado como parametro
-	 */
-	public PublicKey procesarCertificado(String lineasCertificadoServer)
-	{
-		String[] arrayCertServer = lineasCertificadoServer.split("\n");
-		String textoPK = arrayCertServer[6];
 
-		byte[] publicBytes = Base64.decode(textoPK);
-		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicBytes);
-		KeyFactory keyFactory;
-		PublicKey pubKey=null;
-		try {
-			keyFactory = KeyFactory.getInstance("RSA");
-
-			pubKey = keyFactory.generatePublic(keySpec);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return pubKey;
-	}
 }
