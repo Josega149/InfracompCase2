@@ -1,6 +1,10 @@
 package cliente;
 
+import java.security.Key;
 import java.security.MessageDigest;
+
+import javax.crypto.Mac;
+import javax.crypto.SecretKey;
 
 public class CifradorHmacMD5 {
 	
@@ -19,13 +23,15 @@ public class CifradorHmacMD5 {
 		}
 	}
 
-	public byte[] calcular(String dato) {
+	public byte[] calcular(String dato, SecretKey key) {
 		try {
-		
+			Mac mac = Mac.getInstance("HMACMD5");
+			mac.init(key);
+			
 			byte[] text = dato.getBytes();
 			String s1 = new String(text);
 			System.out.println("dato original: " + s1);
-			byte [] digest = getKeyedDigest(text);
+			byte [] digest = mac.doFinal(text);
 			String s2 = new String(digest);
 			System.out.println("digest: "+ s2);
 			return digest;
@@ -36,9 +42,9 @@ public class CifradorHmacMD5 {
 		}
 	}
 	
-    public boolean sonIguales(String msj, byte[] digest) {
+    public boolean sonIguales(String msj, byte[] digest, SecretKey llave) {
         boolean son= true;
-        byte[] mensaje = calcular(msj);
+        byte[] mensaje = calcular(msj, llave);
         if (digest.length == mensaje.length){
             for (int i=0; i<mensaje.length && son;i++){
                 if (digest[i]!=mensaje[i]) {

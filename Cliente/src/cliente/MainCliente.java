@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.net.Socket;
 import java.security.KeyPair;
 import java.security.PublicKey;
@@ -88,39 +89,44 @@ public class MainCliente
 		
 		resp = in.readLine();//llega cifrado con la llave publica del cliente (la mia)
 		byte [] textoEnBytes = DatatypeConverter.parseHexBinary(resp);
-		String llaveSimetricaAcordada = cifradorAsim.descifrarLlaveSimetrica(textoEnBytes, keyAsin.getPrivate());
-		System.out.println("llave simetrica acordada "+llaveSimetricaAcordada);
-		byte[] decodedKey = (llaveSimetricaAcordada).getBytes();
-		// rebuild key using SecretKeySpec
-		//System.out.println(" que pasaaaaa ");
+		byte [] llaveSimetricaAcordada = cifradorAsim.descifrarLlaveSimetrica(textoEnBytes, keyAsin.getPrivate());
+						System.out.println("llave simetrica acordada "+llaveSimetricaAcordada);
+						byte[] decodedKey = llaveSimetricaAcordada;// hasta aqui deberia estar bien
+		
 		SecretKey llaveSimetrica = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
-		System.out.println("LLAVE SIMETRICAAA "+llaveSimetrica);
+						System.out.println("LLAVE SIMETRICAAA "+llaveSimetrica);
 		//mando cifrado con la llave publica del server la llave que me llego
-		String llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(llaveSimetrica.toString(), llavePublicaServer);
-		System.out.println("La llave simetrica cifradaaaaaaaa ");
-		out.println(DatatypeConverter.printHexBinary((llaveSimetricaCifrada).getBytes()) );
+		byte[] llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(decodedKey, llavePublicaServer);
+		System.out.println("Va a mandar llave simetrica cifrada ");
+		out.println(DatatypeConverter.printHexBinary(llaveSimetricaCifrada) );
 	
 		resp = in.readLine();
 		if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues de mandar la llave simetrica)");}
 		
+		//// YAAAAAAAAAAAAAAAAA LLEGA HASTA AQUIIIIIIIIIIIIIIIII
 		
 		
 		//cifra el mensaje a mandar
-		String consulta = "consulta";
-		String consultaCifrada = new String(cifradorSim.cifrar(consulta, llaveSimetrica));
-		String hConsulta = new String(cifradorHash.calcular(consulta));
+		String consulta = "1";
+		byte [] consultaCifrada = cifradorSim.cifrar(consulta, llaveSimetrica);
+		byte[] hConsulta = cifradorHash.calcular(consulta, llaveSimetrica);
 		
-		String mensajeCompleto = consultaCifrada+":"+hConsulta;
+		byte[] hConsultaCifrado = cifradorSim.cifrar(hConsulta.toString(), llaveSimetrica);
+		String mensajeCompleto = DatatypeConverter.printHexBinary(consultaCifrada)+":"+DatatypeConverter.printHexBinary(hConsultaCifrado);
 		
 		//manda el mensaje concaenado
 		out.println(mensajeCompleto);
+		System.out.println("ya mando el mensaje completo");
 		resp = in.readLine();
 		
+		byte[] elBinary = DatatypeConverter.parseHexBinary(resp);
 		//decifra el mensaje de manera sincronica la respuesta a la consulta
-		resp = cifradorSim.descifrar(resp.getBytes(), llaveSimetrica);
+		resp = cifradorSim.descifrar(elBinary, llaveSimetrica);
+		System.out.println(resp);
+		String [] respArray = resp.split(":"); 
 		
 		//verifica si dice ok o error
-		if(resp.startsWith("OK") || resp.equals("ERROR"))
+		if(resp.startsWith("OK") || resp.startsWith("ERROR"))
 		{
 			if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LA CONSULTA");}
 		}
@@ -129,9 +135,8 @@ public class MainCliente
 			throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para la consulta)");
 		}
 		
-		System.out.println("TERMINA!");
+		System.out.println("TERMINA! "+ resp);
 	}
-
 
 		public static void main(String[] args) 
 		{

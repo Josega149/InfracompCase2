@@ -39,22 +39,22 @@ public class CifradorAsimetricoRSA
 	{
 		return keyPair.getPublic();
 	}
-	public String cifrarLlaveSimetrica(String textoCifrado, PublicKey llavePublicaServer) throws Exception
+	public byte[] cifrarLlaveSimetrica(byte [] textoCifrado, PublicKey llavePublicaServer) throws Exception
 	{
-		String llaveSimetricaCifrada = "";
+		byte[] llaveSimetricaCifrada;
 		//llega un texto cifrado con llave privada del server que contiene la simetrica que sera usada
-		llaveSimetricaCifrada = new String(cifrarConPublica(textoCifrado, llavePublicaServer));
+		llaveSimetricaCifrada = cifrarConPublica(textoCifrado, llavePublicaServer);
 		
 		if(llaveSimetricaCifrada == null){throw new Exception("Ocurrio un error en descifrar");}
 		return llaveSimetricaCifrada;
 	}
-	public byte[] cifrarConPublica(String mensajeACifrar, PublicKey llavePublica) 
+	public byte[] cifrarConPublica(byte [] mensajeACifrar, PublicKey llavePublica) 
 	{
 		try 
 		{
 			Cipher cipher = Cipher.getInstance(ALGORITMO);
 			
-			byte [] clearText = mensajeACifrar.getBytes();
+			byte [] clearText = mensajeACifrar;
 			String s1 = new String (clearText);
 			System.out.println("texto original: " + s1);
 			
@@ -76,16 +76,16 @@ public class CifradorAsimetricoRSA
 		}
 	}
 
-	public String descifrarLlaveSimetrica(byte [] textoCifrado, PrivateKey llavePrivadaCliente) throws Exception
+	public byte[] descifrarLlaveSimetrica(byte [] textoCifrado, PrivateKey llavePrivadaCliente) throws Exception
 	{
-		String llaveSimetrica = "";
+		byte[] llaveSimetrica;
 		//llega un texto cifrado con llave privada del server que contiene la simetrica que sera usada
 		llaveSimetrica = descifrarConPrivada(textoCifrado, llavePrivadaCliente);
 //		System.out.println(" LLEGAAA EN DESCIFRAR LLAVE SIMETRICA ");
 		if(llaveSimetrica == null){throw new Exception("Ocurrio un error en descifrar");}
 		return llaveSimetrica;
 	}
-	private String descifrarConPrivada(byte[] cipheredText, PrivateKey llave) 
+	private byte [] descifrarConPrivada(byte[] cipheredText, PrivateKey llave) 
 	{
 		try 
 		{
@@ -96,7 +96,7 @@ public class CifradorAsimetricoRSA
 			byte [] clearText = cipher.doFinal(cipheredText);
 			String s3 = new String(clearText);
 			System.out.println("texto original: " + s3);
-			return s3;
+			return clearText;
 		}
 		catch (Exception e) 
 		{
