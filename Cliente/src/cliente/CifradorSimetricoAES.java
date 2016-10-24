@@ -42,6 +42,30 @@ public class CifradorSimetricoAES {
 			return null;
 		}
 	}
+	public byte[] cifrarB(byte[] msjRecibido, SecretKey llave) {
+		byte[] cipheredText;
+		try
+		{
+			desKey = llave;
+			Cipher cipher = Cipher.getInstance(PADDING);
+
+			byte[] clearText = msjRecibido;
+			String s1 = new	String (clearText);
+			System.out.println("clave original: " + s1);
+			cipher.init(Cipher.ENCRYPT_MODE, desKey);
+			long startTime = System.nanoTime();
+			cipheredText = cipher.doFinal(clearText);
+			long endTime = System.nanoTime();
+			String s2 = new	String (cipheredText);
+			System.out.println("clave cifrada: " + s2);
+			System.out.println("Tiempo: " + (endTime-startTime));
+			return cipheredText;
+		}
+		catch(Exception e) {
+			System.out.println("Excepcion: " + e.getMessage());
+			return null;
+		}
+	}
 
 
 	/**

@@ -111,7 +111,7 @@ public class MainCliente
 		byte [] consultaCifrada = cifradorSim.cifrar(consulta, llaveSimetrica);
 		byte[] hConsulta = cifradorHash.calcular(consulta, llaveSimetrica);
 		
-		byte[] hConsultaCifrado = cifradorSim.cifrar(hConsulta.toString(), llaveSimetrica);
+		byte[] hConsultaCifrado = cifradorSim.cifrarB(hConsulta, llaveSimetrica);
 		String mensajeCompleto = DatatypeConverter.printHexBinary(consultaCifrada)+":"+DatatypeConverter.printHexBinary(hConsultaCifrado);
 		
 		//manda el mensaje concaenado
