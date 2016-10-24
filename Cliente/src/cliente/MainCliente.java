@@ -125,6 +125,7 @@ public class MainCliente
 		System.out.println(resp);
 		String [] respArray = resp.split(":"); 
 		
+		
 		//verifica si dice ok o error
 		if(resp.startsWith("OK") || resp.startsWith("ERROR"))
 		{
@@ -134,7 +135,7 @@ public class MainCliente
 		{
 			throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para la consulta)");
 		}
-		
+		resp= respArray[1];
 		System.out.println("TERMINA! "+ resp);
 	}
 
