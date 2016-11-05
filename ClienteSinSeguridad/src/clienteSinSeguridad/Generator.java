@@ -10,15 +10,15 @@ public class Generator
 	public Generator()
 	{
 		Task work = createTask();
-		int numberOfTasks = 100;
-		int gapBetweenTasks = 1000;
+		int numberOfTasks = 100;// 400, 200 y 80
+		int gapBetweenTasks = 1000; // 20, 40 y 100
 		generator = new LoadGenerator("Client - Server Load Test", numberOfTasks, work,gapBetweenTasks );
 		generator.generate();
 	}
 	
 	private Task createTask()
 	{
-		return ClientServerTask();
+		return new ClientServerTask();
 	}
 	
 	public static void main(String[] args)
