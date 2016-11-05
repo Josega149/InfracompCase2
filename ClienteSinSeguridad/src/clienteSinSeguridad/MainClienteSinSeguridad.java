@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+
 public class MainClienteSinSeguridad 
 {
 	private Socket canal;
@@ -15,10 +16,12 @@ public class MainClienteSinSeguridad
 	
 	private final static String DIRECCION = "localhost";
 	private final static int PUERTO = 4444;
+
 	
 	
 	public MainClienteSinSeguridad()
 	{
+		
 		// conectar al servidor
 		try 
 		{
@@ -67,10 +70,10 @@ public class MainClienteSinSeguridad
 		System.out.println("TERMINA!");
 
 	}
-	
+	/**
 	public static void main(String[] args)
 	{
 		MainClienteSinSeguridad main = new MainClienteSinSeguridad();
-	}
+	}*/
 
 }
