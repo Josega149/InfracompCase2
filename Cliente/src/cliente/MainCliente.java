@@ -1,14 +1,19 @@
 package cliente;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.net.Socket;
 import java.security.KeyPair;
 import java.security.PublicKey;
 import java.util.Base64;
+import java.util.concurrent.TimeUnit;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -79,6 +84,7 @@ public class MainCliente
 			if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LOS ALGORITMOS");}
 		}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
+		long tInicioAut = System.nanoTime();
 		// comienzo pasar el certificado
 		PublicKey llavePublicaServer = manejadorCertificado.creationYProcesamiento(keyAsin,canal.getOutputStream(),out, in);
 		//manejadorCertificado.procesarCertificado();
@@ -103,8 +109,8 @@ public class MainCliente
 		resp = in.readLine();
 		if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues de mandar la llave simetrica)");}
 		
-		//// YAAAAAAAAAAAAAAAAA LLEGA HASTA AQUIIIIIIIIIIIIIIIII
-		
+		//// Se cuenta el tiempo de autenticación
+		long tiempoAutenticacion = System.nanoTime()-tInicioAut;
 		
 		//cifra el mensaje a mandar
 		String consulta = "1";
@@ -115,6 +121,7 @@ public class MainCliente
 		String mensajeCompleto = DatatypeConverter.printHexBinary(consultaCifrada)+":"+DatatypeConverter.printHexBinary(hConsultaCifrado);
 		
 		//manda el mensaje concaenado
+		long tInicioConsulta = System.nanoTime();
 		out.println(mensajeCompleto);
 		System.out.println("ya mando el mensaje completo");
 		resp = in.readLine();
@@ -136,7 +143,18 @@ public class MainCliente
 			throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para la consulta)");
 		}
 		resp= respArray[1];
+		long tiempoRespuesta = System.nanoTime()-tInicioConsulta;
 		System.out.println("TERMINA! "+ resp);
+		
+		try{
+			File tiempos = new File("./data/tiempos");
+			PrintWriter writer = new PrintWriter(new FileWriter(tiempos,true));
+			writer.println("tAutenticación:"+ TimeUnit.MILLISECONDS.toMillis(tiempoAutenticacion));
+			writer.println("tRespuesta:"+ TimeUnit.MILLISECONDS.toMillis(tiempoRespuesta));
+			writer.close();
+			}catch (Exception e){
+				//:)
+			}
 	}
 
 		public static void main(String[] args) 

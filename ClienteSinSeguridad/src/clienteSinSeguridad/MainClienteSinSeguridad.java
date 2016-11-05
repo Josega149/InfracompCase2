@@ -1,11 +1,14 @@
 package clienteSinSeguridad;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainClienteSinSeguridad 
@@ -39,6 +42,7 @@ public class MainClienteSinSeguridad
 	}
 	public void iniciarConversacion() throws Exception
 	{
+		
 		out.println("HOLA");
 		String resp = in.readLine();
 		if(!resp.equals("OK")){throw new Exception("SERVIDOR REPONDIO MAL (el hola)");}
@@ -51,23 +55,39 @@ public class MainClienteSinSeguridad
 		}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
 		// comienzo pasar el certificado
+		long tInicioAut= System.nanoTime()	;
 		out.println("CERTFICADOCLIENTE");
 		resp = in.readLine();
 		if(!resp.equals("CERTIFICADOSERVIDOR")){throw new Exception ("SERVIDOR RESPONDIO MAL (el certificado)");}
 		
 		out.println("OK");
+		
+		
 		resp = in.readLine();
 		if(!resp.equals("CIFRADOKC+")){throw new Exception ("SERVIDOR RESPONDIO MAL (el cifrado ck+)");}
 		
 		out.println("CIFRADOKS+");
 		resp = in.readLine();
 		if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues del cifrado ks+)");}
+		long tiempoAutenticacion = System.nanoTime() - tInicioAut;
 		
+		long tInicioConsulta = System.nanoTime();
 		out.println("CIFRADOLS1");
 		resp = in.readLine();
 		if(!resp.equals("CIFRADOLS2")){throw new Exception ("SERVIDOR RESPONDIO MAL (el CIFRADOLS2");}
 		
+		long tiempoRespuesta = System.nanoTime() - tInicioConsulta;
 		System.out.println("TERMINA!");
+		
+		try{
+			File tiempos = new File("./data/tiempos");
+			PrintWriter writer = new PrintWriter(new FileWriter(tiempos,true));
+			writer.println("tAutenticación:"+ TimeUnit.MILLISECONDS.toMillis(tiempoAutenticacion));
+			writer.println("tRespuesta:"+ TimeUnit.MILLISECONDS.toMillis(tiempoRespuesta));
+			writer.close();
+			}catch (Exception e){
+				//:)
+			}
 
 	}
 	/**
