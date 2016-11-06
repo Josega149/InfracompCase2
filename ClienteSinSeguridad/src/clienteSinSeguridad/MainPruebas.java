@@ -22,6 +22,7 @@ public class MainPruebas {
 	{
 		for (int i=0;i<10;i++)
 		{
+			@SuppressWarnings("unused")
 			Generator gen = new Generator();
 			
 			int sumaAut=0;
@@ -43,7 +44,7 @@ public class MainPruebas {
 				}
 				promedioAutenticacion = NUMBER_OF_TASKS!=numPerdidas? sumaAut / (NUMBER_OF_TASKS-numPerdidas):-1;
 				promedioConsulta = NUMBER_OF_TASKS!=numPerdidas? sumaCons/(NUMBER_OF_TASKS-numPerdidas):-1;
-				
+				br.close();
 			}catch(Exception e){
 				
 			}

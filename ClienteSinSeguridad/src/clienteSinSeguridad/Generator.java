@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.concurrent.TimeUnit;
 
 import uniandes.gload.core.*;
 
@@ -53,7 +52,7 @@ public class Generator
 			}
 			tiempoAutenticacion = num!=numPerdidas? sumaAut / (num-numPerdidas):-1;
 			tiempoRespuesta = num!=numPerdidas? sumaCons/(num-numPerdidas):-1;
-			
+			br.close();
 		}catch(Exception e){
 			
 		}

@@ -21,6 +21,7 @@ public class ClientServerTask extends Task{
 		// TODO Auto-generated method stub
 		
 		try {
+			@SuppressWarnings("unused")
 			MainClienteSinSeguridad cliente = new MainClienteSinSeguridad();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
