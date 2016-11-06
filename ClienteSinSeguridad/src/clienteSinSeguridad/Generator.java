@@ -63,15 +63,9 @@ public class Generator
 		try{
 			File res = new File("./data/resultados");
 			PrintWriter writer = new PrintWriter(new FileWriter(res,true));
-			writer.println("tAutenticación con "+MainPruebas.NUMBER_OF_TASKS+" clientes "
-					+ "y ramp-up de "+MainPruebas.GAP_BETWEEN_TASKS+" : "
-					+  tiempoAutenticacion);
-			writer.println("tRespuesta con "+MainPruebas.NUMBER_OF_TASKS+" clientes "
-					+ "y ramp-up de "+MainPruebas.GAP_BETWEEN_TASKS+" : "
-					+ tiempoRespuesta);
-			writer.println("numPerdidas con "+MainPruebas.NUMBER_OF_TASKS+" clientes "
-					+ "y ramp-up de "+MainPruebas.GAP_BETWEEN_TASKS+" : "
-					+ numPerdidas);
+			writer.println("promAut:"+ tiempoAutenticacion);
+			writer.println("promConsulta:"+ tiempoRespuesta);
+			writer.println("numPerdidas:" + numPerdidas);
 			writer.close();
 			}catch (Exception e){
 				//:)
