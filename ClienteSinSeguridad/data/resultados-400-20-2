@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 82
+tRespuesta con 400 clientes y ramp-up de 20: 27
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 94
+tRespuesta con 400 clientes y ramp-up de 20: 34
+numPerdidas con 400 clientes y ramp-up de 20: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 400 clientes y ramp-up de 20: 261
+tRespuesta con 400 clientes y ramp-up de 20: 91
+numPerdidas con 400 clientes y ramp-up de 20: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 48
+tRespuesta con 400 clientes y ramp-up de 20: 15
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 46
+tRespuesta con 400 clientes y ramp-up de 20: 14
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 62
+tRespuesta con 400 clientes y ramp-up de 20: 22
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 55
+tRespuesta con 400 clientes y ramp-up de 20: 17
+numPerdidas con 400 clientes y ramp-up de 20: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 400 clientes y ramp-up de 20: 32
+tRespuesta con 400 clientes y ramp-up de 20: 10
+numPerdidas con 400 clientes y ramp-up de 20: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 33
+tRespuesta con 400 clientes y ramp-up de 20: 12
+numPerdidas con 400 clientes y ramp-up de 20: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 32
+tRespuesta con 400 clientes y ramp-up de 20: 10
+numPerdidas con 400 clientes y ramp-up de 20: 0
