@@ -19,9 +19,9 @@ public class ClientServerTask extends Task{
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		MainClienteSinSeguridad cliente = new MainClienteSinSeguridad();
+		
 		try {
-			cliente.iniciarConversacion();
+			MainClienteSinSeguridad cliente = new MainClienteSinSeguridad();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
