@@ -32,7 +32,7 @@ public class Servidor {
 	/**
 	 * Constante que especifica el numero de threads que se usan en el pool de conexiones.
 	 */
-	public static final int N_THREADS = 1;
+	public static final int N_THREADS = 2;
 
 	/**
 	 * Puerto en el cual escucha el servidor. 
