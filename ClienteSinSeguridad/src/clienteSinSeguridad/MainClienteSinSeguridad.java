@@ -3,9 +3,11 @@ package clienteSinSeguridad;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 
@@ -15,7 +17,7 @@ public class MainClienteSinSeguridad
 	private PrintWriter out;
 	private BufferedReader in;
 	
-	private final static String DIRECCION = "localhost";
+	private final static String DIRECCION = "192.168.0.5";
 	private final static int PUERTO = 4444;
 
 	
