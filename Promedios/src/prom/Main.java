@@ -85,72 +85,72 @@ public class Main {
 			while (banana!= null){
 				String [] arreglito = banana.split(":");
 				if (arreglito[0].equals("tAutenticación")){
-					if(n<num)
+					if(n<2*num)
 						sumaAut1+=Integer.parseInt(arreglito[1]);
-					else if (n<2*num)
+					else if (n<2*2*num)
 						sumaAut2+=Integer.parseInt(arreglito[1]);
-					else if (n<3*num)
+					else if (n<3*2*num)
 						sumaAut3+=Integer.parseInt(arreglito[1]);
-					else if (n<4*num)
+					else if (n<4*2*num)
 						sumaAut4+=Integer.parseInt(arreglito[1]);
-					else if (n<5*num)
+					else if (n<5*2*num)
 						sumaAut5+=Integer.parseInt(arreglito[1]);
-					else if (n<6*num)
+					else if (n<6*2*num)
 						sumaAut6+=Integer.parseInt(arreglito[1]);
-					else if (n<7*num)
+					else if (n<7*2*num)
 						sumaAut7+=Integer.parseInt(arreglito[1]);
-					else if (n<8*num)
+					else if (n<8*2*num)
 						sumaAut8+=Integer.parseInt(arreglito[1]);
-					else if (n<9*num)
+					else if (n<9*2*num)
 						sumaAut9+=Integer.parseInt(arreglito[1]);
-					else if (n<10*num)
-						sumaAut10=Integer.parseInt(arreglito[1]);
+					else if (n<10*2*num)
+						sumaAut10+=Integer.parseInt(arreglito[1]);
 				}
 					
 				else if (arreglito[0].equals("falla")){
-					if(n<num)
+					if(n<2*num)
 						numPerdidas1++;
-					else if (n<2*num)
+					else if (n<2*2*num)
 						numPerdidas2++;
-					else if (n<3*num)
+					else if (n<3*2*num)
 						numPerdidas3++;
-					else if (n<4*num)
+					else if (n<4*2*num)
 						numPerdidas4++;
-					else if (n<5*num)
+					else if (n<5*2*num)
 						numPerdidas5++;
-					else if (n<6*num)
+					else if (n<6*2*num)
 						numPerdidas6++;
-					else if (n<7*num)
+					else if (n<7*2*num)
 						numPerdidas7++;
-					else if (n<8*num)
+					else if (n<8*2*num)
 						numPerdidas8++;
-					else if (n<9*num)
+					else if (n<9*2*num)
 						numPerdidas9++;
-					else if (n<10*num)
+					else if (n<10*2*num)
 						numPerdidas10++;
 				}
 					
 				else{
-					if(n<num)
+					if(n<2*num)
 						sumaCons1+=Integer.parseInt(arreglito[1]);
-					else if (n<2*num)
+					else if (n<2*2*num)
 						sumaCons2+=Integer.parseInt(arreglito[1]);
-					else if (n<3*num)
+					else if (n<3*2*num)
 						sumaCons3+=Integer.parseInt(arreglito[1]);
-					else if (n<4*num)
+					else if (n<4*2*num)
 						sumaCons4+=Integer.parseInt(arreglito[1]);
-					else if (n<5*num)
+					else if (n<5*2*num)
 						sumaCons5+=Integer.parseInt(arreglito[1]);
-					else if (n<6*num)
+					else if (n<6*2*num)
 						sumaCons6+=Integer.parseInt(arreglito[1]);
-					else if (n<7*num)
+					else if (n<7*2*num)
 						sumaCons7+=Integer.parseInt(arreglito[1]);
-					else if (n<8*num)
+					else if (n<8*2*num)
 						sumaCons8+=Integer.parseInt(arreglito[1]);
-					else if (n<9*num)
+					else if (n<9*2*num)
 						sumaCons9+=Integer.parseInt(arreglito[1]);
-					else if (n<10*num)
-						sumaCons10=Integer.parseInt(arreglito[1]);
+					else if (n<10*2*num)
+						sumaCons10+=Integer.parseInt(arreglito[1]);
 				}
 					
 				n++;

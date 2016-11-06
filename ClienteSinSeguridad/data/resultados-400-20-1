@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 40
+tRespuesta con 400 clientes y ramp-up de 20: 13
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 42
+tRespuesta con 400 clientes y ramp-up de 20: 13
+numPerdidas con 400 clientes y ramp-up de 20: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 400 clientes y ramp-up de 20: 40
+tRespuesta con 400 clientes y ramp-up de 20: 13
+numPerdidas con 400 clientes y ramp-up de 20: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 37
+tRespuesta con 400 clientes y ramp-up de 20: 12
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 31
+tRespuesta con 400 clientes y ramp-up de 20: 11
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 30
+tRespuesta con 400 clientes y ramp-up de 20: 10
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 28
+tRespuesta con 400 clientes y ramp-up de 20: 9
+numPerdidas con 400 clientes y ramp-up de 20: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 400 clientes y ramp-up de 20: 26
+tRespuesta con 400 clientes y ramp-up de 20: 8
+numPerdidas con 400 clientes y ramp-up de 20: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 27
+tRespuesta con 400 clientes y ramp-up de 20: 9
+numPerdidas con 400 clientes y ramp-up de 20: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 29
+tRespuesta con 400 clientes y ramp-up de 20: 9
+numPerdidas con 400 clientes y ramp-up de 20: 0
