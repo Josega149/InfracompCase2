@@ -69,20 +69,28 @@ public class MainCliente
 		}catch (Exception e)
 		{
 			e.getStackTrace();
+			try{
+				File tiempos = new File("./data/tiempos");
+				PrintWriter writer = new PrintWriter(new FileWriter(tiempos,true));
+				writer.println("falla:m");
+				writer.close();
+				}catch (Exception x){
+					//:)
+				}
 		}
 	}
 	public void iniciarConversacion() throws Exception
 	{
 		out.println("HOLA");
 		String resp = in.readLine();
-		if(!resp.equals("OK")){throw new Exception("SERVIDOR REPONDIO MAL (el hola)");}
+		//if(!resp.equals("OK")){throw new Exception("SERVIDOR REPONDIO MAL (el hola)");}
 		
 		out.println("ALGORITMOS:AES:RSA:HMACMD5");
 		resp = in.readLine();
-		if(resp.equals("OK") || resp.equals("ERROR"))
-		{
-			if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LOS ALGORITMOS");}
-		}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
+		//if(resp.equals("OK") || resp.equals("ERROR"))
+		//{
+		//	if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LOS ALGORITMOS");}
+		//}else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
 		long tInicioAut = System.nanoTime();
 		// comienzo pasar el certificado
@@ -107,7 +115,7 @@ public class MainCliente
 		out.println(DatatypeConverter.printHexBinary(llaveSimetricaCifrada) );
 	
 		resp = in.readLine();
-		if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues de mandar la llave simetrica)");}
+		//if(!resp.equals("OK")){throw new Exception ("SERVIDOR RESPONDIO MAL (el OK despues de mandar la llave simetrica)");}
 		
 		//// Se cuenta el tiempo de autenticación
 		long tiempoAutenticacion = System.nanoTime()-tInicioAut;
@@ -134,14 +142,14 @@ public class MainCliente
 		
 		
 		//verifica si dice ok o error
-		if(resp.startsWith("OK") || resp.startsWith("ERROR"))
-		{
-			if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LA CONSULTA");}
-		}
-		else
-		{
-			throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para la consulta)");
-		}
+//		if(resp.startsWith("OK") || resp.startsWith("ERROR"))
+//		{
+//			if(resp.equals("ERROR")){throw new Exception("SACO ERROR POR LA CONSULTA");}
+//		}
+//		else
+//		{
+//			throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para la consulta)");
+//		}
 		resp= respArray[1];
 		long tiempoRespuesta = System.nanoTime()-tInicioConsulta;
 		System.out.println("TERMINA! "+ resp);
@@ -156,9 +164,10 @@ public class MainCliente
 				//:)
 			}
 	}
-
+/**
 		public static void main(String[] args) 
 		{
 			MainCliente main = new MainCliente();
 		}
+		*/
 	}
