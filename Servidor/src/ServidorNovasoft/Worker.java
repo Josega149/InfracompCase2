@@ -98,7 +98,7 @@ public class Worker implements Runnable {
 	 */
 	private String read(BufferedReader reader) throws IOException {
 		String linea = reader.readLine();
-		if(SHOW_IN)			System.out.println("Thread " + id + "<<CLNT: (recibe) " + linea);
+		//if(SHOW_IN)			System.out.println("Thread " + id + "<<CLNT: (recibe) " + linea);
 		return linea;
 		
 	}
@@ -232,7 +232,7 @@ public class Worker implements Runnable {
 			linea= read(reader);
 			if(!linea.equals(OK))
 			{
-				System.out.println("Error de confirmación, cerrando conexion: "+linea);
+				//System.out.println("Error de confirmación, cerrando conexion: "+linea);
 				return;
 			}
 						
@@ -291,7 +291,7 @@ public class Worker implements Runnable {
 				String rta= Transformacion.codificar(Seguridad.symmetricEncryption("ERROR: No coinciden la consulta con su digest".getBytes(), llaveSimetrica, algoritmos[1]));
 				write(writer, rta );
 			}
-			System.out.println("Thread " + id + "Terminando\n");
+			//System.out.println("Thread " + id + "Terminando\n");
 			
 			
 			

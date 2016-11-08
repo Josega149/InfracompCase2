@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 691
+tRespuesta con 200 clientes y ramp-up de 40: 5
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 641
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 738
+tRespuesta con 200 clientes y ramp-up de 40: 5
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 690
+tRespuesta con 200 clientes y ramp-up de 40: 6
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 705
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 660
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 653
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 647
+tRespuesta con 200 clientes y ramp-up de 40: 6
+numPerdidas con 200 clientes y ramp-up de 40: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 663
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 669
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
