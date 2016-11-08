@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7782
+tRespuesta con 80 clientes y ramp-up de 100: 14
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7680
+tRespuesta con 80 clientes y ramp-up de 100: 8
+numPerdidas con 80 clientes y ramp-up de 100: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7992
+tRespuesta con 80 clientes y ramp-up de 100: 8
+numPerdidas con 80 clientes y ramp-up de 100: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 8365
+tRespuesta con 80 clientes y ramp-up de 100: 8
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7437
+tRespuesta con 80 clientes y ramp-up de 100: 9
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7247
+tRespuesta con 80 clientes y ramp-up de 100: 6
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 8317
+tRespuesta con 80 clientes y ramp-up de 100: 6
+numPerdidas con 80 clientes y ramp-up de 100: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7717
+tRespuesta con 80 clientes y ramp-up de 100: 6
+numPerdidas con 80 clientes y ramp-up de 100: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7628
+tRespuesta con 80 clientes y ramp-up de 100: 5
+numPerdidas con 80 clientes y ramp-up de 100: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 7811
+tRespuesta con 80 clientes y ramp-up de 100: 6
+numPerdidas con 80 clientes y ramp-up de 100: 0
