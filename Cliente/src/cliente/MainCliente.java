@@ -26,7 +26,7 @@ public class MainCliente
 	private OutputStream os;
 	private BufferedReader in;
 
-	private final static String DIRECCION = "localhost";
+	private final static String DIRECCION = "157.253.228.214";
 	private final static int PUERTO = 4443;
 
 	private CifradorSimetricoAES cifradorSim;
@@ -104,14 +104,14 @@ public class MainCliente
 		resp = in.readLine();//llega cifrado con la llave publica del cliente (la mia)
 		byte [] textoEnBytes = DatatypeConverter.parseHexBinary(resp);
 		byte [] llaveSimetricaAcordada = cifradorAsim.descifrarLlaveSimetrica(textoEnBytes, keyAsin.getPrivate());
-						System.out.println("llave simetrica acordada "+llaveSimetricaAcordada);
+						//System.out.println("llave simetrica acordada "+llaveSimetricaAcordada);
 						byte[] decodedKey = llaveSimetricaAcordada;// hasta aqui deberia estar bien
 		
 		SecretKey llaveSimetrica = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
-						System.out.println("LLAVE SIMETRICAAA "+llaveSimetrica);
+						//System.out.println("LLAVE SIMETRICAAA "+llaveSimetrica);
 		//mando cifrado con la llave publica del server la llave que me llego
 		byte[] llaveSimetricaCifrada = cifradorAsim.cifrarLlaveSimetrica(decodedKey, llavePublicaServer);
-		System.out.println("Va a mandar llave simetrica cifrada ");
+		//System.out.println("Va a mandar llave simetrica cifrada ");
 		out.println(DatatypeConverter.printHexBinary(llaveSimetricaCifrada) );
 	
 		resp = in.readLine();
@@ -131,15 +131,15 @@ public class MainCliente
 		//manda el mensaje concaenado
 		long tInicioConsulta = System.nanoTime();
 		out.println(mensajeCompleto);
-		System.out.println("ya mando el mensaje completo");
+		//System.out.println("ya mando el mensaje completo");
 		resp = in.readLine();
 		
 		byte[] elBinary = DatatypeConverter.parseHexBinary(resp);
 		//decifra el mensaje de manera sincronica la respuesta a la consulta
 		resp = cifradorSim.descifrar(elBinary, llaveSimetrica);
-		System.out.println(resp);
+		//System.out.println(resp);
 		String [] respArray = resp.split(":"); 
-		
+		//System.out.println("TERMINA!");
 		
 		//verifica si dice ok o error
 //		if(resp.startsWith("OK") || resp.startsWith("ERROR"))
@@ -152,7 +152,7 @@ public class MainCliente
 //		}
 		resp= respArray[1];
 		long tiempoRespuesta = System.nanoTime()-tInicioConsulta;
-		System.out.println("TERMINA! "+ resp);
+		System.out.println("TERMINA! ");
 		
 		try{
 			File tiempos = new File("./data/tiempos");
