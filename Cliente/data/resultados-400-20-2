@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2195
+tRespuesta con 400 clientes y ramp-up de 20: 9
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2045
+tRespuesta con 400 clientes y ramp-up de 20: 8
+numPerdidas con 400 clientes y ramp-up de 20: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2071
+tRespuesta con 400 clientes y ramp-up de 20: 5
+numPerdidas con 400 clientes y ramp-up de 20: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2064
+tRespuesta con 400 clientes y ramp-up de 20: 5
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 1912
+tRespuesta con 400 clientes y ramp-up de 20: 5
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2111
+tRespuesta con 400 clientes y ramp-up de 20: 8
+numPerdidas con 400 clientes y ramp-up de 20: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2088
+tRespuesta con 400 clientes y ramp-up de 20: 5
+numPerdidas con 400 clientes y ramp-up de 20: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2014
+tRespuesta con 400 clientes y ramp-up de 20: 5
+numPerdidas con 400 clientes y ramp-up de 20: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 2145
+tRespuesta con 400 clientes y ramp-up de 20: 5
+numPerdidas con 400 clientes y ramp-up de 20: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 400 clientes y ramp-up de 20: 1990
+tRespuesta con 400 clientes y ramp-up de 20: 5
+numPerdidas con 400 clientes y ramp-up de 20: 0
