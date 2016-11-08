@@ -15,7 +15,7 @@ public class MainClienteSinSeguridad
 	private PrintWriter out;
 	private BufferedReader in;
 	
-	private final static String DIRECCION = "192.168.0.5";
+	private final static String DIRECCION = "157.253.228.123";
 	private final static int PUERTO = 4444;
 
 	
