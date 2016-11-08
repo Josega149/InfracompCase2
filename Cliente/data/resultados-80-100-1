@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 780
+tRespuesta con 80 clientes y ramp-up de 100: 7
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 707
+tRespuesta con 80 clientes y ramp-up de 100: 4
+numPerdidas con 80 clientes y ramp-up de 100: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 80 clientes y ramp-up de 100: 743
+tRespuesta con 80 clientes y ramp-up de 100: 6
+numPerdidas con 80 clientes y ramp-up de 100: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 748
+tRespuesta con 80 clientes y ramp-up de 100: 5
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 786
+tRespuesta con 80 clientes y ramp-up de 100: 4
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 697
+tRespuesta con 80 clientes y ramp-up de 100: 5
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 683
+tRespuesta con 80 clientes y ramp-up de 100: 5
+numPerdidas con 80 clientes y ramp-up de 100: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 80 clientes y ramp-up de 100: 746
+tRespuesta con 80 clientes y ramp-up de 100: 5
+numPerdidas con 80 clientes y ramp-up de 100: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 766
+tRespuesta con 80 clientes y ramp-up de 100: 4
+numPerdidas con 80 clientes y ramp-up de 100: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 689
+tRespuesta con 80 clientes y ramp-up de 100: 4
+numPerdidas con 80 clientes y ramp-up de 100: 0

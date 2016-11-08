@@ -110,6 +110,7 @@ public class Worker implements Runnable {
 	private void write(PrintWriter writer, String msg) {
 		writer.println(msg);
 		//if(SHOW_OUT)		System.out.println("Srv " + id + ">>SERV (envia): " + msg);
+		System.out.println(id);
 	}
 	/**
 	 * Metodo que establece el protocolo de comunicacion con el punto de atencion.
