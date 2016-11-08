@@ -58,7 +58,6 @@ public class MainCliente
 
 	public void iniciarComunicacion()
 	{
-		// conectar al servidor
 		try 
 		{
 			canal = new Socket(DIRECCION, PUERTO);
@@ -66,19 +65,20 @@ public class MainCliente
 			in = new BufferedReader(new InputStreamReader(canal.getInputStream()));
 
 			iniciarConversacion();
-		}catch (Exception e)
+		}
+		catch (Exception e)
 		{
-			e.getStackTrace();
 			try{
 				File tiempos = new File("./data/tiempos");
 				PrintWriter writer = new PrintWriter(new FileWriter(tiempos,true));
 				writer.println("falla:m");
 				writer.close();
 				}catch (Exception x){
-					//:)
+					x.printStackTrace();
 				}
 		}
 	}
+	
 	public void iniciarConversacion() throws Exception
 	{
 		out.println("HOLA");
@@ -161,9 +161,11 @@ public class MainCliente
 			writer.println("tRespuesta:"+ TimeUnit.MILLISECONDS.toMillis(tiempoRespuesta));
 			writer.close();
 			}catch (Exception e){
-				//:)
+				e.printStackTrace();
 			}
 	}
+	
+	
 /**
 		public static void main(String[] args) 
 		{

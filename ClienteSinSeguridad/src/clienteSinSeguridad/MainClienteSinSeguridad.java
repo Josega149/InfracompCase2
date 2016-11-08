@@ -22,8 +22,6 @@ public class MainClienteSinSeguridad
 	
 	public MainClienteSinSeguridad()
 	{
-		
-		// conectar al servidor
 		try 
 		{
 		    canal = new Socket(DIRECCION, PUERTO);
@@ -62,7 +60,7 @@ public class MainClienteSinSeguridad
 		}//else{throw new Exception("SERVIDOR REPONDIO MAL (ni ok ni error para algoritmos)");}
 		
 		// comienzo pasar el certificado
-		long tInicioAut= System.nanoTime()	;
+		long tInicioAut= System.nanoTime();
 		out.println("CERTFICADOCLIENTE");
 		resp = in.readLine();
 		//if(!resp.equals("CERTIFICADOSERVIDOR")){throw new Exception ("SERVIDOR RESPONDIO MAL (el certificado)");}

@@ -10,9 +10,9 @@ import java.io.PrintWriter;
 
 public class Main {
 	
-	public final static int NUMBER_OF_TASKS=400; //400, 200  y 80
+	public final static int NUMBER_OF_TASKS=200; //400, 200  y 80
 
-	public final static int GAP_BETWEEN_TASKS=20; //20, 40 y 100
+	public final static int GAP_BETWEEN_TASKS=40; //20, 40 y 100
 	
 
 	private static int numPerdidas1;
@@ -79,7 +79,7 @@ public class Main {
 		int n = 0;
 		try{
 			//Leo los tiempos
-			FileReader fr = new FileReader("../ClienteSinSeguridad/data/tiempos");
+			FileReader fr = new FileReader("../Cliente/data/tiempos");
 			BufferedReader br = new BufferedReader(fr);
 			String banana = br.readLine();
 			while (banana!= null){
@@ -186,7 +186,7 @@ public class Main {
 				
 	private static void escribirResultados (){
 		try{
-			File res = new File("../ClienteSinSeguridad/data/resultados");
+			File res = new File("../Cliente/data/resultados");
 			PrintWriter writer = new PrintWriter(new FileWriter(res,false));
 			writer.println("--------------------GRUPO 1------------------------");
 			writer.println("tAutenticación con "+NUMBER_OF_TASKS+" clientes "
