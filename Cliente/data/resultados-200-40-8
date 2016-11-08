@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 2016
+tRespuesta con 200 clientes y ramp-up de 40: 27
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 1875
+tRespuesta con 200 clientes y ramp-up de 40: 13
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 1869
+tRespuesta con 200 clientes y ramp-up de 40: 18
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 1870
+tRespuesta con 200 clientes y ramp-up de 40: 18
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 1817
+tRespuesta con 200 clientes y ramp-up de 40: 18
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 1944
+tRespuesta con 200 clientes y ramp-up de 40: 14
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 2046
+tRespuesta con 200 clientes y ramp-up de 40: 15
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 2018
+tRespuesta con 200 clientes y ramp-up de 40: 17
+numPerdidas con 200 clientes y ramp-up de 40: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 1957
+tRespuesta con 200 clientes y ramp-up de 40: 24
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 2456
+tRespuesta con 200 clientes y ramp-up de 40: 27
+numPerdidas con 200 clientes y ramp-up de 40: 0

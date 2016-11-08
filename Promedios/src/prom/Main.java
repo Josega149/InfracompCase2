@@ -79,7 +79,7 @@ public class Main {
 		int n = 0;
 		try{
 			//Leo los tiempos
-			FileReader fr = new FileReader("../Cliente/data/tiempos");
+			FileReader fr = new FileReader("../ClienteSinSeguridad/data/tiempos");
 			BufferedReader br = new BufferedReader(fr);
 			String banana = br.readLine();
 			while (banana!= null){
@@ -186,7 +186,7 @@ public class Main {
 				
 	private static void escribirResultados (){
 		try{
-			File res = new File("../Cliente/data/resultados");
+			File res = new File("../ClienteSinSeguridad/data/resultados");
 			PrintWriter writer = new PrintWriter(new FileWriter(res,false));
 			writer.println("--------------------GRUPO 1------------------------");
 			writer.println("tAutenticación con "+NUMBER_OF_TASKS+" clientes "
