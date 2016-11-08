@@ -26,7 +26,7 @@ public class MainCliente
 	private OutputStream os;
 	private BufferedReader in;
 
-	private final static String DIRECCION = "157.253.228.214";
+	private final static String DIRECCION = "157.253.158.56";
 	private final static int PUERTO = 4443;
 
 	private CifradorSimetricoAES cifradorSim;
