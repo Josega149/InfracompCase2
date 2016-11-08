@@ -26,7 +26,7 @@ public class CifradorAsimetricoRSA
 			generator.initialize(1024);
 			keyPair = generator.generateKeyPair();
 			
-			System.out.println("llave privada "+keyPair.getPrivate()+" \n llave publica "+keyPair.getPublic().toString() );
+			//System.out.println("llave privada "+keyPair.getPrivate()+" \n llave publica "+keyPair.getPublic().toString() );
 		}
 		catch(Exception e){e.getStackTrace();}
 	}
