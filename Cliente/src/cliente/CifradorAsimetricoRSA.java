@@ -56,7 +56,7 @@ public class CifradorAsimetricoRSA
 			
 			byte [] clearText = mensajeACifrar;
 			String s1 = new String (clearText);
-			System.out.println("texto original: " + s1);
+			//System.out.println("texto original: " + s1);
 			
 			cipher.init(Cipher.ENCRYPT_MODE, llavePublica);//encripta con la publica del server
 			
@@ -64,8 +64,8 @@ public class CifradorAsimetricoRSA
 			byte [] cipheredText = cipher.doFinal(clearText);
 			long endTime = System.nanoTime();
 			
-			System.out.println("texto cifrado: " + cipheredText);
-			System.out.println("Tiempo asimetrico: " +(endTime - startTime));
+			//System.out.println("texto cifrado: " + cipheredText);
+			//System.out.println("Tiempo asimetrico: " +(endTime - startTime));
 			
 			return cipheredText;
 		}
@@ -95,7 +95,7 @@ public class CifradorAsimetricoRSA
 													 // viene cifrado con la llave publica
 			byte [] clearText = cipher.doFinal(cipheredText);
 			String s3 = new String(clearText);
-			System.out.println("texto original: " + s3);
+			//System.out.println("texto original: " + s3);
 			return clearText;
 		}
 		catch (Exception e) 
