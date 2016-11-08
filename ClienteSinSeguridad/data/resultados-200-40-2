@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 14
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 13
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 20
+tRespuesta con 200 clientes y ramp-up de 40: 6
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 36
+tRespuesta con 200 clientes y ramp-up de 40: 9
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 24
+tRespuesta con 200 clientes y ramp-up de 40: 8
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 21
+tRespuesta con 200 clientes y ramp-up de 40: 7
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 27
+tRespuesta con 200 clientes y ramp-up de 40: 7
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 31
+tRespuesta con 200 clientes y ramp-up de 40: 9
+numPerdidas con 200 clientes y ramp-up de 40: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 35
+tRespuesta con 200 clientes y ramp-up de 40: 11
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 29
+tRespuesta con 200 clientes y ramp-up de 40: 12
+numPerdidas con 200 clientes y ramp-up de 40: 0
