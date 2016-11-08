@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 13
+tRespuesta con 200 clientes y ramp-up de 40: 3
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 13
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 12
+tRespuesta con 200 clientes y ramp-up de 40: 3
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 14
+tRespuesta con 200 clientes y ramp-up de 40: 3
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 12
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 16
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 19
+tRespuesta con 200 clientes y ramp-up de 40: 8
+numPerdidas con 200 clientes y ramp-up de 40: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 200 clientes y ramp-up de 40: 12
+tRespuesta con 200 clientes y ramp-up de 40: 3
+numPerdidas con 200 clientes y ramp-up de 40: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 13
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 200 clientes y ramp-up de 40: 14
+tRespuesta con 200 clientes y ramp-up de 40: 4
+numPerdidas con 200 clientes y ramp-up de 40: 0
