@@ -157,8 +157,8 @@ public class MainCliente
 		try{
 			File tiempos = new File("./data/tiempos");
 			PrintWriter writer = new PrintWriter(new FileWriter(tiempos,true));
-			writer.println("tAutenticación:"+ TimeUnit.MILLISECONDS.toMillis(tiempoAutenticacion));
-			writer.println("tRespuesta:"+ TimeUnit.MILLISECONDS.toMillis(tiempoRespuesta));
+			writer.println("tAutenticación:"+ TimeUnit.MILLISECONDS.convert(tiempoAutenticacion, TimeUnit.NANOSECONDS));
+			writer.println("tRespuesta:"+ TimeUnit.MILLISECONDS.convert(tiempoRespuesta, TimeUnit.NANOSECONDS));
 			writer.close();
 			}catch (Exception e){
 				e.printStackTrace();
