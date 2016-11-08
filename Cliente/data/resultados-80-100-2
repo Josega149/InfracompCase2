@@ -1,0 +1,40 @@
+--------------------GRUPO 1------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 808
+tRespuesta con 80 clientes y ramp-up de 100: 9
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 2------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 725
+tRespuesta con 80 clientes y ramp-up de 100: 14
+numPerdidas con 80 clientes y ramp-up de 100: 0
+---------------------GRUPO 3-----------------------
+tAutenticación con 80 clientes y ramp-up de 100: 728
+tRespuesta con 80 clientes y ramp-up de 100: 10
+numPerdidas con 80 clientes y ramp-up de 100: 0
+-------------------GRUPO 4-------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 729
+tRespuesta con 80 clientes y ramp-up de 100: 9
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 5------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 707
+tRespuesta con 80 clientes y ramp-up de 100: 11
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 6------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 624
+tRespuesta con 80 clientes y ramp-up de 100: 12
+numPerdidas con 80 clientes y ramp-up de 100: 0
+--------------------GRUPO 7------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 736
+tRespuesta con 80 clientes y ramp-up de 100: 6
+numPerdidas con 80 clientes y ramp-up de 100: 0
+---------------------GRUPO 8-----------------------
+tAutenticación con 80 clientes y ramp-up de 100: 631
+tRespuesta con 80 clientes y ramp-up de 100: 9
+numPerdidas con 80 clientes y ramp-up de 100: 0
+------------------GRUPO 9--------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 678
+tRespuesta con 80 clientes y ramp-up de 100: 7
+numPerdidas con 80 clientes y ramp-up de 100: 0
+-------------------GRUPO 10-------------------------
+tAutenticación con 80 clientes y ramp-up de 100: 852
+tRespuesta con 80 clientes y ramp-up de 100: 15
+numPerdidas con 80 clientes y ramp-up de 100: 0
